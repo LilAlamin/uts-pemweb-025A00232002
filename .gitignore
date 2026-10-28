@@ -1,0 +1,14 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary & Log Files
+*.log
+scratch/
+tmp/
