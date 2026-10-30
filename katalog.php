@@ -234,18 +234,9 @@ $stats = hitungStatistik($tools);
             <li><a href="katalog.php">Daftar Lengkap Katalog</a></li>
           </ul>
         </div>
-        <div class="footer-links">
-          <h4>Informasi Akademik</h4>
-          <ul>
-            <li><span>Mata Kuliah: Pemrograman Web</span></li>
-            <li><span>Proyek: Ujian Tengah Semester (UTS)</span></li>
-            <li><span>Target Rubrik: Level 4 (100)</span></li>
-          </ul>
-        </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; <?= date('Y'); ?> DevPulse AI. Dibuat untuk pemenuhan UTS Pemrograman Web.</p>
-        <p>Dibangun dengan PHP Native 8.x, Strict Types, &amp; Modern Vanilla CSS.</p>
+        <p>&copy; <?= date('Y'); ?> DevPulse AI. Seluruh hak cipta dilindungi.</p>
       </div>
     </div>
   </footer>

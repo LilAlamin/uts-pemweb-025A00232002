@@ -6,12 +6,12 @@
 ---
 
 ## 📌 Identitas Mahasiswa & Tugas
-- **Nama Pengembang**: Ronald Ramadhani (LilAlamin)
-- **NIM**: *(Isi NIM Anda)*
-- **Kelas / Semester**: Teknik Informatika / Semester 4
+- **Nama Pengembang**: Ronald Ramadhani Pangestu
+- **NIM**: *025A00232002*
+- **Kelas / Semester**: Teknik Informatika / Semester 3
 - **Mata Kuliah**: Pemrograman Web
 - **Tema Terpilih**: **Tema 3 - Direktori Tools AI & SaaS Developer Modern**
-- **Repository Git**: [GitHub / GitLab Link]
+- **Repository Git**: [https://github.com/LilAlamin/uts-pemweb-025A00232002](https://github.com/LilAlamin/uts-pemweb-025A00232002)
 
 ---
 
