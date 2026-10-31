@@ -20,7 +20,7 @@
 
 ### 🌟 Fitur Utama
 1. **Beranda Interaktif (`index.php`)**:
-   - *Hero section* modern dengan tipografi bersih dan *gradient text*.
+   - *Hero section* modern dengan tipografi bersih dan tata letak elegan.
    - Metrik statistik ringkasan yang dihitung secara dinamis dari array dataset (total tools, jumlah lisensi gratis, rata-rata rating, dan estimasi total biaya langganan).
    - Kurasi *Featured Tools* (perangkat unggulan) yang dirender dinamis dengan semantic card `<article>`.
    - Kotak panduan pemilihan model lisensi untuk mahasiswa.
@@ -29,11 +29,26 @@
    - **Filter Kategori Dinamis**: Dropdown kategori digenerasi otomatis dari dataset menggunakan fungsi `array_unique()`.
    - **Filter Model Lisensi**: Opsi penyaringan *Free*, *Freemium*, dan *Paid*.
    - **Pencarian Kata Kunci**: Menyaring berdasarkan nama tool, kategori, atau deskripsi secara *case-insensitive*.
-   - **Tabel Matriks Perbandingan**: Tinjauan tabular lengkap yang rapi dan terstruktur untuk perbandingan cepat.
    - Penanganan *Empty State* ketika kombinasi pencarian tidak menemukan hasil.
 3. **Pemisahan Logika & Keamanan (*Separation of Concerns*)**:
    - Pemisahan bersih antara data mentah (`data.php`), modul fungsi logika (`functions.php`), antarmuka pengguna (`index.php` & `katalog.php`), serta estetika visual (`style.css`).
    - Pencegahan kerentanan *Cross-Site Scripting* (XSS) pada setiap pencetakan variabel HTML menggunakan fungsi pembungkus `e()`.
+
+---
+
+## 📸 Tangkapan Layar Aplikasi (Screenshots)
+
+Berikut adalah tampilan antarmuka web aplikasi **DevPulse AI** yang telah dibangun:
+
+### 1. Halaman Beranda (`index.php`)
+Menyajikan ringkasan metrik statistik ekosistem, kurasi perangkat unggulan (*featured tools*), dan navigasi utama:
+
+![Halaman Beranda](screenshots/beranda.png)
+
+### 2. Halaman Katalog Lengkap (`katalog.php`)
+Menyajikan direktori lengkap dengan fitur pencarian teks real-time, filter kategori dinamis, dan penyaringan model lisensi:
+
+![Halaman Katalog](screenshots/katalog.png)
 
 ---
 
@@ -43,13 +58,13 @@
 | :--- | :--- | :--- | :---: |
 | **Keterhubungan Halaman** | Minimal 2 halaman PHP saling terhubung melalui navigasi aktif. | `index.php` dan `katalog.php` terhubung timbal-balik melalui `<header>` dan `<footer>` dengan indikator class `.active`. | **TERPENUHI (100)** |
 | **HTML5 Semantik** | Menggunakan elemen semantik struktural lengkap dan hirarki heading berurutan. | Memakai `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`. Urutan heading konsisten `<h1>` $\rightarrow$ `<h2>` $\rightarrow$ `<h3>`. | **TERPENUHI (100)** |
-| **Styling CSS Eksternal** | CSS terpisah, reset `box-sizing`, layout terpusat, dan efek interaksi `:hover`. | Berkas `style.css` eksternal memuat `* { box-sizing: border-box; }`, `.container` terpusat (max 1200px), CSS variables, efek transform & shadow pada hover kartu dan tombol. | **TERPENUHI (100)** |
+| **Styling CSS Eksternal** | CSS terpisah, reset `box-sizing`, layout terpusat, dan efek interaksi `:hover`. | Berkas `style.css` eksternal memuat `* { box-sizing: border-box; }`, `.container` terpusat, CSS variables, efek border dan interaksi hover pada kartu dan tombol. | **TERPENUHI (100)** |
 | **Type Safety (Strict Types)** | Menerapkan `declare(strict_types=1);` di baris pertama semua file PHP. | Diterapkan pada baris pertama di `index.php`, `katalog.php`, `data.php`, dan `functions.php`. | **TERPENUHI (100)** |
 | **Struktur Data Array** | Array multidimensi minimal 8 item $\times$ 4 atribut. | `data.php` memuat **10 item tools** dengan **9 atribut** (`id`, `nama_tool`, `kategori`, `model_lisensi`, `biaya_bulanan`, `rating`, `deskripsi_singkat`, `website_resmi`, `icon_symbol`, `is_featured`). | **TERPENUHI (100)** |
-| **Render Dinamis & Percabangan** | Render perulangan `foreach` dan logika percabangan kondisional modern. | `foreach` digunakan untuk render kartu & tabel. Logika badge warna dan predikat rating menggunakan ekspresi PHP 8 `match`. | **TERPENUHI (100)** |
+| **Render Dinamis & Percabangan** | Render perulangan `foreach` dan logika percabangan kondisional modern. | `foreach` digunakan untuk render kartu. Logika badge warna dan predikat rating menggunakan ekspresi PHP 8 `match`. | **TERPENUHI (100)** |
 | **Fungsi Kustom & Bawaan PHP** | Minimal 2 fungsi buatan sendiri bertipe + minimal 3 fungsi array bawaan. | **7 Fungsi Kustom**: `e()`, `formatRupiah()`, `getBadgeClass()`, `getRatingPredicate()`, `hitungStatistik()`, `filterTools()`, `getFeaturedTools()`.<br>**7 Fungsi Bawaan Array**: `count()`, `array_filter()`, `array_column()`, `array_sum()`, `array_unique()`, `array_slice()`, `sort()`. | **TERPENUHI (100)** |
 | **Keamanan Output Data** | Proteksi dari XSS untuk setiap output string. | Semua variabel yang dicetak ke HTML dibungkus aman dengan fungsi `e()` (`htmlspecialchars(..., ENT_QUOTES, 'UTF-8')`). | **TERPENUHI (100)** |
-| **Riwayat Git & Dokumentasi** | Commit terstruktur bertahap (minimal 4-5 tahap logis) dan README informatif. | Repositori mengikuti panduan 5 tahap commit standar (*chore*, *feat(ui)*, *feat(data)*, *feat(logic)*, *refactor*). | **TERPENUHI (100)** |
+| **Riwayat Git & Dokumentasi** | Commit terstruktur bertahap (minimal 4-5 tahap logis) dan README informatif. | Repositori mengikuti alur komit bertahap dengan pesan standar (*chore*, *feat*, *refactor*, *style*). | **TERPENUHI (100)** |
 
 ---
 
@@ -57,13 +72,15 @@
 ```text
 UTS Pemograman Web/
 ├── assets/                  # Direktori aset gambar / ikon (dengan .gitkeep)
-├── screenshots/             # Bukti tangkapan layar tampilan halaman
+├── screenshots/             # Bukti tangkapan layar antarmuka aplikasi
+│   ├── beranda.png          # Screenshot antarmuka halaman beranda
+│   └── katalog.png          # Screenshot antarmuka halaman katalog
 ├── data.php                 # Array multidimensi 10 tools beserta seluruh atributnya
 ├── functions.php            # Kumpulan fungsi logika bisnis, kalkulasi array, & sanitasi XSS
 ├── index.php                # Halaman beranda utama, hero section, & metrik ringkasan
-├── katalog.php              # Halaman katalog lengkap, form filter pencarian, & tabel matriks
+├── katalog.php              # Halaman katalog lengkap, form filter, & grid kartu
 ├── style.css                # Berkas stylesheet CSS modern eksternal responsif
-├── .gitignore               # Konfigurasi pengabaian file cache OS dan editor
+├── .gitignore               # Konfigurasi pengabaian file cache OS, editor, dan skill AI
 └── README.md                # Dokumentasi akademik lengkap proyek UTS
 ```
 
@@ -144,3 +161,5 @@ Repositori ini dikelola dengan mengikuti alur komit logis:
 3. `feat(data): menambahkan array multidimensi 10 tools AI dan fungsi helper bertipe`
 4. `feat(logic): implementasi render foreach, badge lisensi dengan match, dan ringkasan statistik`
 5. `refactor: merapikan kode sesuai PSR-12 dan melengkapi dokumentasi screenshot README`
+6. `style: finalisasi perbaikan UI antarmuka, pembaruan tautan repositori, dan pembersihan footer`
+7. `refactor(katalog): menghapus tabel matriks perbandingan agar antarmuka lebih bersih dan fokus pada grid kartu`
