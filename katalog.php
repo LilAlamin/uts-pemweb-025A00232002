@@ -157,65 +157,6 @@ $stats = hitungStatistik($tools);
         </div>
       <?php endif; ?>
 
-      <!-- Comparison / Summary Table View (Tabel Perbandingan Semantik) -->
-      <section style="margin-top: 56px;">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">Tabel Matriks Perbandingan</h2>
-            <p class="section-desc">Tinjauan tabular lengkap seluruh atribut data perangkat lunak.</p>
-          </div>
-        </div>
-
-        <div class="table-container">
-          <table class="custom-table">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Nama Tools</th>
-                <th>Kategori</th>
-                <th>Model Lisensi</th>
-                <th>Biaya / Bulan</th>
-                <th>Rating</th>
-                <th>Predikat</th>
-                <th>Aksi</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($filteredTools as $index => $tool): ?>
-                <tr>
-                  <td><?= e($tool['id']); ?></td>
-                  <td>
-                    <strong><?= e($tool['nama_tool']); ?></strong>
-                  </td>
-                  <td>
-                    <span class="tool-badge-category"><?= e($tool['kategori']); ?></span>
-                  </td>
-                  <td>
-                    <span class="badge-license <?= e(getBadgeClass((string) $tool['model_lisensi'])); ?>">
-                      <?= e($tool['model_lisensi']); ?>
-                    </span>
-                  </td>
-                  <td>
-                    <strong><?= e(formatRupiah((int) $tool['biaya_bulanan'])); ?></strong>
-                  </td>
-                  <td>
-                    <span style="color: var(--rating-gold);">★</span> <?= e(number_format((float) $tool['rating'], 1)); ?>
-                  </td>
-                  <td>
-                    <small style="color: var(--slate-600);"><?= e(getRatingPredicate((float) $tool['rating'])); ?></small>
-                  </td>
-                  <td>
-                    <a href="<?= e($tool['website_resmi']); ?>" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">
-                      Situs ↗
-                    </a>
-                  </td>
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
     </section>
   </main>
 
