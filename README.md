@@ -1,119 +1,144 @@
 # DevPulse AI - Direktori Tools AI & SaaS Developer
 
-> **Proyek Ujian Tengah Semester (UTS) Pemrograman Web**  
-> Target Penilaian: **Level 4 (Nilai Maksimal = 100)** di seluruh kriteria rubrik.
+> **Dokumentasi Proyek Ujian Tengah Semester (UTS) Pemrograman Web**  
+> Repositori GitHub: [https://github.com/LilAlamin/uts-pemweb-025A00232002](https://github.com/LilAlamin/uts-pemweb-025A00232002)
 
 ---
 
-## 📌 Identitas Mahasiswa & Tugas
-- **Nama Pengembang**: Ronald Ramadhani Pangestu
-- **NIM**: *025A00232002*
+## 1. Identitas Mahasiswa
+- **Nama Lengkap**: Ronald Ramadhani Pangestu
+- **NIM**: 025A00232002
 - **Kelas / Semester**: Teknik Informatika / Semester 3
 - **Mata Kuliah**: Pemrograman Web
-- **Tema Terpilih**: **Tema 3 - Direktori Tools AI & SaaS Developer Modern**
-- **Repository Git**: [https://github.com/LilAlamin/uts-pemweb-025A00232002](https://github.com/LilAlamin/uts-pemweb-025A00232002)
 
 ---
 
-## 🚀 Gambaran Aplikasi
-**DevPulse AI** adalah aplikasi web katalog dan kurasi perangkat lunak kecerdasan buatan (*Artificial Intelligence*) serta platform *Software-as-a-Service* (SaaS) yang dibangun dengan standar PHP modern dan arsitektur kode bersih. Aplikasi ini membantu *software engineer* dan mahasiswa teknologi informasi dalam memilih perangkat pengembangan yang tepat sesuai kebutuhan dan anggaran.
-
-### 🌟 Fitur Utama
-1. **Beranda Interaktif (`index.php`)**:
-   - *Hero section* modern dengan tipografi bersih dan tata letak elegan.
-   - Metrik statistik ringkasan yang dihitung secara dinamis dari array dataset (total tools, jumlah lisensi gratis, rata-rata rating, dan estimasi total biaya langganan).
-   - Kurasi *Featured Tools* (perangkat unggulan) yang dirender dinamis dengan semantic card `<article>`.
-   - Kotak panduan pemilihan model lisensi untuk mahasiswa.
-2. **Katalog Lengkap & Pencarian (`katalog.php`)**:
-   - Penyajian 10 entitas teknologi lengkap dengan badge lisensi, rating bintang, harga, deskripsi, dan tombol tautan ke situs resmi.
-   - **Filter Kategori Dinamis**: Dropdown kategori digenerasi otomatis dari dataset menggunakan fungsi `array_unique()`.
-   - **Filter Model Lisensi**: Opsi penyaringan *Free*, *Freemium*, dan *Paid*.
-   - **Pencarian Kata Kunci**: Menyaring berdasarkan nama tool, kategori, atau deskripsi secara *case-insensitive*.
-   - Penanganan *Empty State* ketika kombinasi pencarian tidak menemukan hasil.
-3. **Pemisahan Logika & Keamanan (*Separation of Concerns*)**:
-   - Pemisahan bersih antara data mentah (`data.php`), modul fungsi logika (`functions.php`), antarmuka pengguna (`index.php` & `katalog.php`), serta estetika visual (`style.css`).
-   - Pencegahan kerentanan *Cross-Site Scripting* (XSS) pada setiap pencetakan variabel HTML menggunakan fungsi pembungkus `e()`.
+## 2. Deskripsi Singkat Tema
+DevPulse AI adalah aplikasi web direktori dan kurasi perangkat lunak kecerdasan buatan (*Artificial Intelligence*) serta platform SaaS yang dirancang untuk membantu mahasiswa dan *software engineer* memilih alat pengembangan terbaik. Aplikasi ini menyajikan data perbandingan model lisensi (*Free, Freemium, Paid*), estimasi biaya langganan, dan ulasan rating secara transparan melalui antarmuka modern berbasis PHP Native 8.x dan Vanilla CSS. Melalui fitur pencarian teks interaktif dan filter kategori dinamis, pengguna dapat menemukan teknologi yang paling tepat sesuai kebutuhan tugas kuliah maupun proyek produksi.
 
 ---
 
-## 📸 Tangkapan Layar Aplikasi (Screenshots)
+## 3. Cara Menjalankan di Localhost
 
-Berikut adalah tampilan antarmuka web aplikasi **DevPulse AI** yang telah dibangun:
+### Prasyarat:
+- Komputer telah terpasang **PHP versi 8.1** atau yang lebih baru (verifikasi dengan perintah `php -v`).
 
-### 1. Halaman Beranda (`index.php`)
-Menyajikan ringkasan metrik statistik ekosistem, kurasi perangkat unggulan (*featured tools*), dan navigasi utama:
-
-![Halaman Beranda](screenshots/beranda.png)
-
-### 2. Halaman Katalog Lengkap (`katalog.php`)
-Menyajikan direktori lengkap dengan fitur pencarian teks real-time, filter kategori dinamis, dan penyaringan model lisensi:
-
-![Halaman Katalog](screenshots/katalog.png)
-
----
-
-## 📋 Tabel Pemenuhan Rubrik Penilaian (Level 4 Checklist)
-
-| Komponen Penilaian | Syarat Level 4 (Maksimal) | Implementasi Pada DevPulse AI | Status |
-| :--- | :--- | :--- | :---: |
-| **Keterhubungan Halaman** | Minimal 2 halaman PHP saling terhubung melalui navigasi aktif. | `index.php` dan `katalog.php` terhubung timbal-balik melalui `<header>` dan `<footer>` dengan indikator class `.active`. | **TERPENUHI (100)** |
-| **HTML5 Semantik** | Menggunakan elemen semantik struktural lengkap dan hirarki heading berurutan. | Memakai `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`. Urutan heading konsisten `<h1>` $\rightarrow$ `<h2>` $\rightarrow$ `<h3>`. | **TERPENUHI (100)** |
-| **Styling CSS Eksternal** | CSS terpisah, reset `box-sizing`, layout terpusat, dan efek interaksi `:hover`. | Berkas `style.css` eksternal memuat `* { box-sizing: border-box; }`, `.container` terpusat, CSS variables, efek border dan interaksi hover pada kartu dan tombol. | **TERPENUHI (100)** |
-| **Type Safety (Strict Types)** | Menerapkan `declare(strict_types=1);` di baris pertama semua file PHP. | Diterapkan pada baris pertama di `index.php`, `katalog.php`, `data.php`, dan `functions.php`. | **TERPENUHI (100)** |
-| **Struktur Data Array** | Array multidimensi minimal 8 item $\times$ 4 atribut. | `data.php` memuat **10 item tools** dengan **9 atribut** (`id`, `nama_tool`, `kategori`, `model_lisensi`, `biaya_bulanan`, `rating`, `deskripsi_singkat`, `website_resmi`, `icon_symbol`, `is_featured`). | **TERPENUHI (100)** |
-| **Render Dinamis & Percabangan** | Render perulangan `foreach` dan logika percabangan kondisional modern. | `foreach` digunakan untuk render kartu. Logika badge warna dan predikat rating menggunakan ekspresi PHP 8 `match`. | **TERPENUHI (100)** |
-| **Fungsi Kustom & Bawaan PHP** | Minimal 2 fungsi buatan sendiri bertipe + minimal 3 fungsi array bawaan. | **7 Fungsi Kustom**: `e()`, `formatRupiah()`, `getBadgeClass()`, `getRatingPredicate()`, `hitungStatistik()`, `filterTools()`, `getFeaturedTools()`.<br>**7 Fungsi Bawaan Array**: `count()`, `array_filter()`, `array_column()`, `array_sum()`, `array_unique()`, `array_slice()`, `sort()`. | **TERPENUHI (100)** |
-| **Keamanan Output Data** | Proteksi dari XSS untuk setiap output string. | Semua variabel yang dicetak ke HTML dibungkus aman dengan fungsi `e()` (`htmlspecialchars(..., ENT_QUOTES, 'UTF-8')`). | **TERPENUHI (100)** |
-| **Riwayat Git & Dokumentasi** | Commit terstruktur bertahap (minimal 4-5 tahap logis) dan README informatif. | Repositori mengikuti alur komit bertahap dengan pesan standar (*chore*, *feat*, *refactor*, *style*). | **TERPENUHI (100)** |
-
----
-
-## 📁 Struktur Berkas Proyek
-```text
-UTS Pemograman Web/
-├── assets/                  # Direktori aset gambar / ikon (dengan .gitkeep)
-├── screenshots/             # Bukti tangkapan layar antarmuka aplikasi
-│   ├── beranda.png          # Screenshot antarmuka halaman beranda
-│   └── katalog.png          # Screenshot antarmuka halaman katalog
-├── data.php                 # Array multidimensi 10 tools beserta seluruh atributnya
-├── functions.php            # Kumpulan fungsi logika bisnis, kalkulasi array, & sanitasi XSS
-├── index.php                # Halaman beranda utama, hero section, & metrik ringkasan
-├── katalog.php              # Halaman katalog lengkap, form filter, & grid kartu
-├── style.css                # Berkas stylesheet CSS modern eksternal responsif
-├── .gitignore               # Konfigurasi pengabaian file cache OS, editor, dan skill AI
-└── README.md                # Dokumentasi akademik lengkap proyek UTS
-```
-
----
-
-## 💻 Panduan Menjalankan Aplikasi Secara Lokal
-
-### Prasyarat
-- PHP versi 8.1 atau lebih baru (verifikasi dengan `php -v`).
-
-### Langkah Menjalankan
-1. Buka aplikasi terminal / command prompt.
-2. Navigasikan ke direktori proyek ini:
+### Langkah-langkah:
+1. **Clone Repositori**:
    ```bash
-   cd "/Users/mac/Documents/Tugas Tugas Kuliah Documents/Pemograman Web/UTS Pemograman Web"
+   git clone https://github.com/LilAlamin/uts-pemweb-025A00232002.git
    ```
-3. Nyalakan web server bawaan PHP:
+2. **Masuk ke Direktori Proyek**:
+   ```bash
+   cd uts-pemweb-025A00232002
+   ```
+3. **Jalankan Web Server Bawaan PHP**:
    ```bash
    php -S localhost:8000
    ```
-4. Buka peramban (*web browser*) dan akses URL berikut:
-   - **Beranda**: [http://localhost:8000/index.php](http://localhost:8000/index.php)
-   - **Katalog Lengkap**: [http://localhost:8000/katalog.php](http://localhost:8000/katalog.php)
+4. **Buka di Peramban (Web Browser)**:
+   - Halaman Beranda: [http://localhost:8000/index.php](http://localhost:8000/index.php)
+   - Halaman Katalog: [http://localhost:8000/katalog.php](http://localhost:8000/katalog.php)
 
 ---
 
-## 🎯 Panduan Jawaban untuk Modifikasi Saat Demo Dosen
+## 4. Daftar Fitur, Berkas, dan Fungsi Penangan
+
+Berikut adalah pemetaan seluruh fitur fungsional aplikasi beserta file dan nama fungsi PHP yang menanganinya:
+
+| No | Fitur Aplikasi | Berkas Terkait | Nama Fungsi / Komponen | Keterangan Singkat |
+| :-: | :--- | :--- | :--- | :--- |
+| 1 | **Sanitasi Keamanan Output (XSS Prevention)** | `functions.php` | `e()` | Membungkus pencetakan string ke HTML dengan `htmlspecialchars` agar terhindar dari serangan Cross-Site Scripting. |
+| 2 | **Format Mata Uang Rupiah** | `functions.php` | `formatRupiah()` | Mengonversi integer biaya langganan bulanan ke format `Rp xx.xxx` atau `Gratis` jika bernilai 0. |
+| 3 | **Styling Dinamis Badge Lisensi** | `functions.php` | `getBadgeClass()` | Menentukan class warna badge lisensi (*Free, Freemium, Paid*) menggunakan ekspresi PHP 8 `match`. |
+| 4 | **Predikat Kualitatif Rating** | `functions.php` | `getRatingPredicate()` | Menghasilkan label predikat ulasan (*Sangat Direkomendasikan, Unggul & Populer, dll.*) berbasis `match`. |
+| 5 | **Kalkulasi Metrik Statistik** | `functions.php` | `hitungStatistik()` | Menghitung total data, jumlah lisensi, rata-rata rating, akumulasi biaya, dan daftar kategori unik. |
+| 6 | **Penyaringan & Pencarian Data** | `functions.php` | `filterTools()` | Menyaring array data tools berdasarkan kategori, lisensi, dan kata kunci teks secara *case-insensitive*. |
+| 7 | **Kurasi Perangkat Unggulan** | `functions.php` | `getFeaturedTools()` | Menyaring dan mengambil 3 tools pilihan teratas dengan flag `is_featured = true` untuk beranda. |
+| 8 | **Halaman Beranda & Metrik** | `index.php` | View Controller Script | Merender *hero section*, 4 kartu metrik statistik dinamis, 3 kartu unggulan, dan info panduan lisensi. |
+| 9 | **Katalog & Filter Interaktif** | `katalog.php` | View Controller Script | Menangani form filter GET, merender grid 10 kartu tools, serta menampilkan pesan *empty state*. |
+| 10 | **Dataset Array Multidimensi** | `data.php` | `$tools` | Sumber data array multidimensi 10 tools $\times$ 9 atribut data lengkap. |
+
+---
+
+## 5. Daftar Fungsi Array Bawaan yang Dipakai dan Fungsinya
+
+Aplikasi ini memanfaatkan fungsi-fungsi bawaan PHP (*built-in array functions*) untuk pengolahan data array multidimensi secara efisien:
+
+1. **`count()`**  
+   - **Lokasi Berkas**: `functions.php` (fungsi `hitungStatistik()`), `index.php`, dan `katalog.php`.  
+   - **Fungsi**: Menghitung total keseluruhan elemen data tools, menghitung jumlah perangkat pada tiap model lisensi (*free*, *freemium*, *paid*), serta menampilkan jumlah data hasil filter pencarian.
+
+2. **`array_filter()`**  
+   - **Lokasi Berkas**: `functions.php` (fungsi `hitungStatistik()`, `filterTools()`, dan `getFeaturedTools()`).  
+   - **Fungsi**: Menyaring item array berdasarkan kondisi tertentu via fungsi *callback* (mengelompokkan lisensi, mencocokkan kata kunci pencarian pada nama/deskripsi/kategori, serta menyaring item berstatus *featured*).
+
+3. **`array_column()`**  
+   - **Lokasi Berkas**: `functions.php` (fungsi `hitungStatistik()`).  
+   - **Fungsi**: Mengekstrak seluruh nilai dari satu kunci spesifik pada array multidimensi (seperti kolom `biaya_bulanan`, `rating`, dan `kategori`) menjadi array satu dimensi.
+
+4. **`array_sum()`**  
+   - **Lokasi Berkas**: `functions.php` (fungsi `hitungStatistik()`).  
+   - **Fungsi**: Menjumlahkan seluruh angka pada array kolom `biaya_bulanan` untuk menghitung total biaya langganan per bulan, serta menjumlahkan nilai `rating` untuk kalkulasi nilai rata-rata.
+
+5. **`array_unique()`**  
+   - **Lokasi Berkas**: `functions.php` (fungsi `hitungStatistik()`).  
+   - **Fungsi**: Menghilangkan nilai duplikat pada array kategori sehingga menghasilkan daftar kategori unik yang digunakan untuk mengisi opsi dropdown filter di `katalog.php`.
+
+6. **`array_values()`**  
+   - **Lokasi Berkas**: `functions.php` (fungsi `hitungStatistik()` dan `getFeaturedTools()`).  
+   - **Fungsi**: Mengindeks ulang kunci numerik array agar kembali berurutan dari 0 setelah elemen-elemennya disaring atau dihilangkan nilai duplikatnya.
+
+7. **`array_slice()`**  
+   - **Lokasi Berkas**: `functions.php` (fungsi `getFeaturedTools()`).  
+   - **Fungsi**: Memotong dan mengambil 3 elemen teratas dari array perangkat unggulan untuk ditampilkan secara ringkas di halaman beranda.
+
+8. **`sort()`**  
+   - **Lokasi Berkas**: `functions.php` (fungsi `hitungStatistik()`).  
+   - **Fungsi**: Mengurutkan daftar kategori unik secara alfabetis (A-Z) agar opsi pada dropdown filter tersusun rapi.
+
+---
+
+## 6. Tangkapan Layar Aplikasi (Screenshots)
+
+Berikut adalah bukti tangkapan layar antarmuka aplikasi **DevPulse AI** yang telah dibangun:
+
+### Tangkapan Layar 1: Halaman Beranda (`index.php`)
+Menampilkan navigasi utama, *hero section*, 4 metrik kartu statistik yang dihitung dinamis dari array, kurasi kartu *Featured Tools*, dan panduan lisensi:
+
+![Tangkapan Layar Beranda](screenshots/beranda.png)
+
+### Tangkapan Layar 2: Halaman Katalog Lengkap (`katalog.php`)
+Menampilkan input pencarian teks *real-time*, dropdown filter kategori dinamis, filter model lisensi, serta kartu direktori perangkat lunak:
+
+![Tangkapan Layar Katalog](screenshots/katalog.png)
+
+---
+
+## 7. Sumber Referensi dan Catatan Pemakaian AI
+
+### Sumber Referensi:
+1. **PHP Official Documentation**: [https://www.php.net/manual/en/](https://www.php.net/manual/en/) (Referensi sintaks `declare(strict_types=1)`, `match expression`, dan fungsi bawaan manipulasi array).
+2. **MDN Web Docs**: [https://developer.mozilla.org/](https://developer.mozilla.org/) (Standar HTML5 Semantic Elements, CSS Flexbox, dan CSS Grid).
+3. **PHP-FIG PSR-12 Coding Style Guide**: [https://www.php-fig.org/psr/psr-12/](https://www.php-fig.org/psr/psr-12/) (Standar penulisan kode bersih, indentasi, dan penamaan fungsi).
+4. **Website Resmi Tools yang Dikurasi**: GitHub Copilot, Cursor IDE, Visual Studio Code, Figma, Vercel, Docker Desktop, Postman, Notion, n8n, dan Claude AI.
+
+### Catatan Pemakaian AI:
+- **Alat Bantu yang Digunakan**: Google Gemini / Antigravity AI Assistant.
+- **Tujuan Pemanfaatan**:
+  - Membantu *brainstorming* arsitektur pemisahan berkas (*Separation of Concerns*) dan penataan struktur fungsi PHP 8 bertipe ketat.
+  - Membantu audit estetika antarmuka CSS manual agar bersih dan rapi (*clean design*), memperbaiki rasio kontras warna sesuai standar aksesibilitas WCAG AA, serta menyusun format dokumentasi teknis.
+- **Kemandirian dan Orisinalitas**: Seluruh implementasi logika PHP, struktur data array multidimensi 10 tools, sanitasi XSS, pengujian kode di localhost, penyesuaian gaya CSS manual, dan alur komit Git dipahami, diverifikasi, dan dijalankan secara mandiri oleh mahasiswa sesuai ketentuan penugasan UTS.
+
+---
+
+## 🎯 Lampiran: Panduan Jawaban Modifikasi Saat Demo Dosen
 
 Dosen penguji kerap menguji pemahaman mahasiswa dengan meminta perubahan kode secara langsung di tempat. Berikut panduan jawaban cepat:
 
 ### Skenario 1: *"Coba tambahkan 1 tool baru ke dalam katalog."*
-- **Lokasi file**: Buka berkas [`data.php`](file:///Users/mac/Documents/Tugas%20Tugas%20Kuliah%20Documents/Pemograman%20Web/UTS%20Pemograman%20Web/data.php).
-- **Aksi**: Salin salah satu blok array di bagian bawah dan tambahkan entitas baru ke-11:
+- **Lokasi file**: Buka berkas [`data.php`](data.php).
+- **Aksi**: Tambahkan entitas baru ke-11 di akhir array:
   ```php
   [
       'id' => 11,
@@ -128,11 +153,11 @@ Dosen penguji kerap menguji pemahaman mahasiswa dengan meminta perubahan kode se
       'is_featured' => false,
   ],
   ```
-- **Hasil**: Halaman beranda dan katalog secara otomatis memperbarui angka total menjadi 11 items, menghitung ulang rating, dan menambah kategori jika ada yang baru tanpa mengubah kode tampilan!
+- **Hasil**: Halaman beranda dan katalog otomatis mengupdate total menjadi 11 items, menghitung ulang rating, dan menambah kategori jika ada yang baru secara dinamis!
 
-### Skenario 2: *"Bagaimana jika ada promo diskon 20% untuk semua tools berbayar?"*
-- **Lokasi file**: Buka berkas [`functions.php`](file:///Users/mac/Documents/Tugas%20Tugas%20Kuliah%20Documents/Pemograman%20Web/UTS%20Pemograman%20Web/functions.php) pada fungsi `formatRupiah()`.
-- **Aksi**: Cukup kalikan parameter dengan `0.8` atau tambahkan parameter diskon opsional:
+### Skenario 2: *"Bagaimana jika ada diskon 20% untuk semua tools berbayar?"*
+- **Lokasi file**: Buka berkas [`functions.php`](functions.php) pada fungsi `formatRupiah()`.
+- **Aksi**: Cukup kalikan parameter dengan `0.8`:
   ```php
   function formatRupiahDiskon(int $angka, float $diskonPersen = 20): string
   {
@@ -143,7 +168,7 @@ Dosen penguji kerap menguji pemahaman mahasiswa dengan meminta perubahan kode se
   ```
 
 ### Skenario 3: *"Jelaskan di mana letak keamanan aplikasi dari serangan peretas!"*
-- **Jawaban**: Keamanan output ditangani terpusat oleh fungsi `e()` pada [`functions.php`](file:///Users/mac/Documents/Tugas%20Tugas%20Kuliah%20Documents/Pemograman%20Web/UTS%20Pemograman%20Web/functions.php):
+- **Jawaban**: Keamanan output ditangani terpusat oleh fungsi `e()` pada [`functions.php`](functions.php):
   ```php
   function e(string|int|float|null $value): string
   {
@@ -151,15 +176,3 @@ Dosen penguji kerap menguji pemahaman mahasiswa dengan meminta perubahan kode se
   }
   ```
   Fungsi ini mengonversi karakter berbahaya seperti `<script>`, `"`, dan `'` menjadi entitas HTML aman (`&lt;script&gt;`), sehingga mencegah serangan injeksi kode (XSS).
-
----
-
-## 📜 Riwayat Git Commit Bertahap
-Repositori ini dikelola dengan mengikuti alur komit logis:
-1. `chore: inisialisasi struktur repositori, gitignore, dan kerangka awal README`
-2. `feat(ui): membuat kerangka HTML5 semantik pada index dan katalog beserta styling CSS`
-3. `feat(data): menambahkan array multidimensi 10 tools AI dan fungsi helper bertipe`
-4. `feat(logic): implementasi render foreach, badge lisensi dengan match, dan ringkasan statistik`
-5. `refactor: merapikan kode sesuai PSR-12 dan melengkapi dokumentasi screenshot README`
-6. `style: finalisasi perbaikan UI antarmuka, pembaruan tautan repositori, dan pembersihan footer`
-7. `refactor(katalog): menghapus tabel matriks perbandingan agar antarmuka lebih bersih dan fokus pada grid kartu`
