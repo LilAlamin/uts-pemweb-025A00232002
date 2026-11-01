@@ -110,7 +110,7 @@ $stats = hitungStatistik($tools);
             <article class="tool-card">
               <div class="card-top">
                 <span class="tool-badge-category"><?= e($tool['kategori']); ?></span>
-                <span class="badge-license <?= e(getBadgeClass((string) $tool['model_lisensi'])); ?>">
+                <span class="badge-license <?= e(warnaBadge((string) $tool['model_lisensi'])); ?>">
                   <?= e($tool['model_lisensi']); ?>
                 </span>
               </div>
@@ -137,7 +137,7 @@ $stats = hitungStatistik($tools);
                   <span class="price-label">Biaya Bulanan</span>
                   <span class="price-val"><?= e(formatRupiah((int) $tool['biaya_bulanan'])); ?></span>
                 </div>
-                <div class="tool-rating" title="Predikat: <?= e(getRatingPredicate((float) $tool['rating'])); ?>">
+                <div class="tool-rating" title="Predikat: <?= e(predikatRating((float) $tool['rating'])); ?>">
                   <span class="rating-star">★</span>
                   <span><?= e(number_format((float) $tool['rating'], 1)); ?></span>
                 </div>

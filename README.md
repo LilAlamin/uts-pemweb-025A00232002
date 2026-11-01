@@ -48,13 +48,13 @@ Berikut adalah pemetaan seluruh fitur fungsional aplikasi beserta file dan nama 
 
 | No | Fitur Aplikasi | Berkas Terkait | Nama Fungsi / Komponen | Keterangan Singkat |
 | :-: | :--- | :--- | :--- | :--- |
-| 1 | **Sanitasi Keamanan Output (XSS Prevention)** | `functions.php` | `e()` | Membungkus pencetakan string ke HTML dengan `htmlspecialchars` agar terhindar dari serangan Cross-Site Scripting. |
+| 1 | **Sanitasi Keamanan Output (XSS Prevention)** | `functions.php` | `bersihkan()` *(alias `e()`)* | Membungkus pencetakan string ke HTML dengan `htmlspecialchars` agar terhindar dari serangan Cross-Site Scripting. |
 | 2 | **Format Mata Uang Rupiah** | `functions.php` | `formatRupiah()` | Mengonversi integer biaya langganan bulanan ke format `Rp xx.xxx` atau `Gratis` jika bernilai 0. |
-| 3 | **Styling Dinamis Badge Lisensi** | `functions.php` | `getBadgeClass()` | Menentukan class warna badge lisensi (*Free, Freemium, Paid*) menggunakan ekspresi PHP 8 `match`. |
-| 4 | **Predikat Kualitatif Rating** | `functions.php` | `getRatingPredicate()` | Menghasilkan label predikat ulasan (*Sangat Direkomendasikan, Unggul & Populer, dll.*) berbasis `match`. |
+| 3 | **Styling Dinamis Badge Lisensi** | `functions.php` | `warnaBadge()` | Menentukan class warna badge lisensi (*Free, Freemium, Paid*) menggunakan ekspresi PHP 8 `match`. |
+| 4 | **Predikat Kualitatif Rating** | `functions.php` | `predikatRating()` | Menghasilkan label predikat ulasan (*Sangat Direkomendasikan, Unggul & Populer, dll.*) berbasis `match`. |
 | 5 | **Kalkulasi Metrik Statistik** | `functions.php` | `hitungStatistik()` | Menghitung total data, jumlah lisensi, rata-rata rating, akumulasi biaya, dan daftar kategori unik. |
 | 6 | **Penyaringan & Pencarian Data** | `functions.php` | `filterTools()` | Menyaring array data tools berdasarkan kategori, lisensi, dan kata kunci teks secara *case-insensitive*. |
-| 7 | **Kurasi Perangkat Unggulan** | `functions.php` | `getFeaturedTools()` | Menyaring dan mengambil 3 tools pilihan teratas dengan flag `is_featured = true` untuk beranda. |
+| 7 | **Kurasi Perangkat Unggulan** | `functions.php` | `ambilUnggulan()` | Menyaring dan mengambil 3 tools pilihan teratas dengan flag `is_featured = true` untuk beranda. |
 | 8 | **Halaman Beranda & Metrik** | `index.php` | View Controller Script | Merender *hero section*, 4 kartu metrik statistik dinamis, 3 kartu unggulan, dan info panduan lisensi. |
 | 9 | **Katalog & Filter Interaktif** | `katalog.php` | View Controller Script | Menangani form filter GET, merender grid 10 kartu tools, serta menampilkan pesan *empty state*. |
 | 10 | **Dataset Array Multidimensi** | `data.php` | `$tools` | Sumber data array multidimensi 10 tools $\times$ 9 atribut data lengkap. |
@@ -70,7 +70,7 @@ Aplikasi ini memanfaatkan fungsi-fungsi bawaan PHP (*built-in array functions*) 
    - **Fungsi**: Menghitung total keseluruhan elemen data tools, menghitung jumlah perangkat pada tiap model lisensi (*free*, *freemium*, *paid*), serta menampilkan jumlah data hasil filter pencarian.
 
 2. **`array_filter()`**  
-   - **Lokasi Berkas**: `functions.php` (fungsi `hitungStatistik()`, `filterTools()`, dan `getFeaturedTools()`).  
+   - **Lokasi Berkas**: `functions.php` (fungsi `hitungStatistik()`, `filterTools()`, dan `ambilUnggulan()`).  
    - **Fungsi**: Menyaring item array berdasarkan kondisi tertentu via fungsi *callback* (mengelompokkan lisensi, mencocokkan kata kunci pencarian pada nama/deskripsi/kategori, serta menyaring item berstatus *featured*).
 
 3. **`array_column()`**  
@@ -86,11 +86,11 @@ Aplikasi ini memanfaatkan fungsi-fungsi bawaan PHP (*built-in array functions*) 
    - **Fungsi**: Menghilangkan nilai duplikat pada array kategori sehingga menghasilkan daftar kategori unik yang digunakan untuk mengisi opsi dropdown filter di `katalog.php`.
 
 6. **`array_values()`**  
-   - **Lokasi Berkas**: `functions.php` (fungsi `hitungStatistik()` dan `getFeaturedTools()`).  
+   - **Lokasi Berkas**: `functions.php` (fungsi `hitungStatistik()` dan `ambilUnggulan()`).  
    - **Fungsi**: Mengindeks ulang kunci numerik array agar kembali berurutan dari 0 setelah elemen-elemennya disaring atau dihilangkan nilai duplikatnya.
 
 7. **`array_slice()`**  
-   - **Lokasi Berkas**: `functions.php` (fungsi `getFeaturedTools()`).  
+   - **Lokasi Berkas**: `functions.php` (fungsi `ambilUnggulan()`).  
    - **Fungsi**: Memotong dan mengambil 3 elemen teratas dari array perangkat unggulan untuk ditampilkan secara ringkas di halaman beranda.
 
 8. **`sort()`**  
@@ -168,9 +168,9 @@ Dosen penguji kerap menguji pemahaman mahasiswa dengan meminta perubahan kode se
   ```
 
 ### Skenario 3: *"Jelaskan di mana letak keamanan aplikasi dari serangan peretas!"*
-- **Jawaban**: Keamanan output ditangani terpusat oleh fungsi `e()` pada [`functions.php`](functions.php):
+- **Jawaban**: Keamanan output ditangani terpusat oleh fungsi `bersihkan()` (dengan alias `e()`) pada [`functions.php`](functions.php):
   ```php
-  function e(string|int|float|null $value): string
+  function bersihkan(string|int|float|null $value): string
   {
       return htmlspecialchars((string) ($value ?? ''), ENT_QUOTES, 'UTF-8');
   }

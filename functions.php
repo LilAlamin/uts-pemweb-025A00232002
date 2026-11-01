@@ -15,9 +15,17 @@ declare(strict_types=1);
 /**
  * Mengamankan output teks terhadap serangan Cross-Site Scripting (XSS).
  */
-function e(string|int|float|null $value): string
+function bersihkan(string|int|float|null $value): string
 {
     return htmlspecialchars((string) ($value ?? ''), ENT_QUOTES, 'UTF-8');
+}
+
+/**
+ * Alias singkat dari fungsi bersihkan().
+ */
+function e(string|int|float|null $value): string
+{
+    return bersihkan($value);
 }
 
 /**
@@ -32,9 +40,9 @@ function formatRupiah(int $angka): string
 }
 
 /**
- * Menentukan class CSS badge lisensi menggunakan PHP 8 match expression.
+ * Menentukan class CSS warna badge lisensi menggunakan PHP 8 match expression.
  */
-function getBadgeClass(string $lisensi): string
+function warnaBadge(string $lisensi): string
 {
     return match (strtolower(trim($lisensi))) {
         'free' => 'badge-free',
@@ -47,7 +55,7 @@ function getBadgeClass(string $lisensi): string
 /**
  * Memberikan predikat kualitatif berdasarkan nilai rating menggunakan match expression.
  */
-function getRatingPredicate(float $rating): string
+function predikatRating(float $rating): string
 {
     return match (true) {
         $rating >= 4.8 => 'Sangat Direkomendasikan',
@@ -137,8 +145,13 @@ function filterTools(array $tools, ?string $kategori = null, ?string $lisensi = 
  * @param array<int, array<string, mixed>> $tools
  * @return array<int, array<string, mixed>>
  */
-function getFeaturedTools(array $tools, int $limit = 3): array
+function ambilUnggulan(array $tools, int $limit = 3): array
 {
     $featured = array_filter($tools, fn(array $item): bool => !empty($item['is_featured']));
     return array_slice(array_values($featured), 0, $limit);
 }
+
+// Alias fungsi untuk kompatibilitas
+function getBadgeClass(string $lisensi): string { return warnaBadge($lisensi); }
+function getRatingPredicate(float $rating): string { return predikatRating($rating); }
+function getFeaturedTools(array $tools, int $limit = 3): array { return ambilUnggulan($tools, $limit); }

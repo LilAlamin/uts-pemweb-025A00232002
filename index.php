@@ -9,7 +9,7 @@ require_once __DIR__ . '/functions.php';
 $stats = hitungStatistik($tools);
 
 // Ambil daftar tool unggulan (featured) untuk ditampilkan di beranda
-$featuredTools = getFeaturedTools($tools, 3);
+$featuredTools = ambilUnggulan($tools, 3);
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -123,7 +123,7 @@ $featuredTools = getFeaturedTools($tools, 3);
           <article class="tool-card">
             <div class="card-top">
               <span class="tool-badge-category"><?= e($tool['kategori']); ?></span>
-              <span class="badge-license <?= e(getBadgeClass((string) $tool['model_lisensi'])); ?>">
+              <span class="badge-license <?= e(warnaBadge((string) $tool['model_lisensi'])); ?>">
                 <?= e($tool['model_lisensi']); ?>
               </span>
             </div>
@@ -137,7 +137,7 @@ $featuredTools = getFeaturedTools($tools, 3);
                 <span class="price-label">Biaya Bulanan</span>
                 <span class="price-val"><?= e(formatRupiah((int) $tool['biaya_bulanan'])); ?></span>
               </div>
-              <div class="tool-rating" title="Predikat: <?= e(getRatingPredicate((float) $tool['rating'])); ?>">
+              <div class="tool-rating" title="Predikat: <?= e(predikatRating((float) $tool['rating'])); ?>">
                 <span class="rating-star">★</span>
                 <span><?= e(number_format((float) $tool['rating'], 1)); ?></span>
               </div>
