@@ -55,8 +55,8 @@ Berikut adalah pemetaan seluruh fitur fungsional aplikasi beserta file dan nama 
 | 5 | **Kalkulasi Metrik Statistik** | `functions.php` | `hitungStatistik()` | Menghitung total data, jumlah lisensi, rata-rata rating, akumulasi biaya, dan daftar kategori unik. |
 | 6 | **Penyaringan & Pencarian Data** | `functions.php` | `filterTools()` | Menyaring array data tools berdasarkan kategori, lisensi, dan kata kunci teks secara *case-insensitive*. |
 | 7 | **Kurasi Perangkat Unggulan** | `functions.php` | `ambilUnggulan()` | Menyaring dan mengambil 3 tools pilihan teratas dengan flag `is_featured = true` untuk beranda. |
-| 8 | **Halaman Beranda & Metrik** | `index.php` | View Controller Script | Merender *hero section*, 4 kartu metrik statistik dinamis, 3 kartu unggulan, dan info panduan lisensi. |
-| 9 | **Katalog & Filter Interaktif** | `katalog.php` | View Controller Script | Menangani form filter GET, merender grid 10 kartu tools, serta menampilkan pesan *empty state*. |
+| 8 | **Halaman Beranda & Metrik** | `index.php` | Skrip Halaman Beranda | Menyiapkan data statistik, merender *hero section*, kartu metrik, dan kartu unggulan. |
+| 9 | **Katalog & Filter Interaktif** | `katalog.php` | Skrip Halaman Katalog | Menangkap parameter filter GET, menyaring data, dan merender grid kartu tools. |
 | 10 | **Dataset Array Multidimensi** | `data.php` | `$tools` | Sumber data array multidimensi 10 tools $\times$ 9 atribut data lengkap. |
 
 ---
